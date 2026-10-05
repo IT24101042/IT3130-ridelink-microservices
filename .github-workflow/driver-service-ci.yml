@@ -1,0 +1,28 @@
+name: Driver Service CI
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'driver-service/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'driver-service/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: driver-service
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build and run tests
+        run: mvn -B clean verify
