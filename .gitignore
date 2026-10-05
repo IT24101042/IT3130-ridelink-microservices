@@ -1,0 +1,9 @@
+   target/
+   .env
+   *.iml
+   .idea/
+   !.env.example
+   .env.*
+   *.log
+   .DS_Store
+   Thumbs.db
